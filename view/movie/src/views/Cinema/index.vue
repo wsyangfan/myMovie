@@ -1,15 +1,15 @@
 <template>
-    <div class="login">
-        
+    <div>
+        Cinema
     </div>
 </template>
 
 <style lang="scss" scoped>
 
-</style>>
+</style>
 
 <script>
 export default {
     
 }
-</script>>
+</script>
