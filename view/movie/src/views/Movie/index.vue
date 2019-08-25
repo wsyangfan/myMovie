@@ -8,8 +8,8 @@
           <i class="iconfont icon-lower-triangle"></i>
         </div>
         <div class="hot_switch">
-          <div class="hot_item active">正在热映</div>
-          <div class="hot_item">即将上映</div>
+          <router-link tag="div" to="/movie/nowPlaying" class="hot_item">正在热映</router-link>
+          <router-link tag="div" to="/movie/comingSoon" class="hot_item">即将上映</router-link>
         </div>
         <div class="search_entry">
           <i class="iconfont icon-sousuo"></i>
@@ -26,6 +26,7 @@
 <style lang="scss" scoped>
 #content {
   flex: 1;
+  height: 100vh;
   overflow: auto;
   margin-bottom: 50px;
   position: relative;

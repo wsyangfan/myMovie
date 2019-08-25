@@ -18,6 +18,10 @@ export default{
         {
             path: "search",
             component: () => import("@/components/Search")
+        },
+        {
+            path: "/*",
+            component: () => import("@/components/NowPlaying")
         }
     ]
 }

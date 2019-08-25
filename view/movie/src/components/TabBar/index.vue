@@ -1,5 +1,5 @@
 <template>
-    <header id="footer">
+    <footer id="footer">
         <ul>
             <router-link tag="li" to="/movie">
                 <i class="iconfont icon-dianying"></i>
@@ -14,7 +14,7 @@
                 <p>我的</p>
             </router-link>
         </ul>
-    </header>
+    </footer>
 </template>
 
 <script>
