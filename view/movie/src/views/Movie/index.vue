@@ -3,17 +3,19 @@
     <Header title="喵喵电影" />
     <div id="content">
       <div class="movie_menue">
-        <div class="city_name">
+        <router-link class="city_name" tag="div" to="/movie/city">
           <span>大连</span>
           <i class="iconfont icon-lower-triangle"></i>
-        </div>
+        </router-link>
+
         <div class="hot_switch">
           <router-link tag="div" to="/movie/nowPlaying" class="hot_item">正在热映</router-link>
           <router-link tag="div" to="/movie/comingSoon" class="hot_item">即将上映</router-link>
         </div>
-        <div class="search_entry">
+
+        <router-link class="search_entry" tag="div" to="/movie/search">
           <i class="iconfont icon-sousuo"></i>
-        </div>
+        </router-link>
       </div>
       <keep-alive>
         <router-view />
@@ -25,11 +27,14 @@
 
 <style lang="scss" scoped>
 #content {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
   flex: 1;
-  height: 100vh;
   overflow: auto;
   margin-bottom: 50px;
-  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -46,10 +51,6 @@
       margin-left: 20px;
       height: 100%;
       line-height: 45px;
-      &.active {
-        color: #ef4238;
-        border-bottom: 2px #ef4238 solid;
-      }
     }
     .hot_switch {
       display: flex;
@@ -63,10 +64,6 @@
       text-align: center;
       margin: 0 12px;
       font-weight: 700;
-      &.active {
-        color: #ef4238;
-        border-bottom: 2px #ef4238 solid;
-      }
     }
     .search_entry {
       margin-right: 20px;
@@ -76,10 +73,10 @@
         font-size: 24px;
         color: red;
       }
-      &.active {
-        color: #ef4238;
-        border-bottom: 2px #ef4238 solid;
-      }
+    }
+    .router-link-active {
+      color: #ef4238;
+      border-bottom: 2px #ef4238 solid;
     }
   }
 }

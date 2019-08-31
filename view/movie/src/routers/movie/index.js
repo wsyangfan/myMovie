@@ -20,8 +20,8 @@ export default{
             component: () => import("@/components/Search")
         },
         {
-            path: "/*",
-            component: () => import("@/components/NowPlaying")
+            path: "/movie",
+            redirect: "nowPlaying"
         }
     ]
 }
