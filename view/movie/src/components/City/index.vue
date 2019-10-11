@@ -15,11 +15,12 @@
             <div class="city_sort">
                 <div v-for="(item, index) in cityList"
                     :key="index"
-                    @click="choiceCity(item.id)">
+                    :ref="item.index">
                     <h2>{{item.index}}</h2>
                     <ul>
                         <li v-for="city in item.list"
-                            :key="city.id">
+                            :key="city.id"
+                            @click="choiceCity(city.id)">
                             {{city.nm}}
                         </li>
                     </ul>
@@ -28,8 +29,8 @@
         </div>
         <div class="city_index">
             <ul>
-                <li v-for="(item, index) in cityList"
-                    :key="index"
+                <li v-for="item in cityList"
+                    :key="item.index"
                     @click="choiceFirstLetter(item.index)">
                     {{item.index}}
                 </li>
@@ -46,7 +47,7 @@ export default {
             cityList: [],
             hotList: []
         }
-    },
+    }, 
     methods: {
         formatCityList(cities){
             let cityList = [];
@@ -68,8 +69,33 @@ export default {
                 }
             }
 
-            this.cityList = cityList;
-            this.hotList = hotList;
+            cityList.sort((n1, n2) => {
+                if(n1.index > n2.index){
+                    return 1;
+                }
+                else if(n1.index <  n2.index){
+                    return -1;
+                }
+                else{
+                    return 0;
+                }
+            });
+
+            hotList.sort((n1, n2) => {
+                if(n1.index > n2.index){
+                    return 1;
+                }
+                else if(n1.index <  n2.index){
+                    return -1;
+                }
+                else{
+                    return 0;
+                }
+            });
+            
+            return { cityList , hotList}
+            // this.cityList = cityList;
+            // this.hotList = hotList;
 
             function toCom(firstLetter){
                 for(let i of cityList){
@@ -85,7 +111,7 @@ export default {
             console.log(id)
         },
         choiceFirstLetter(index){
-            console.log(index)
+            this.$refs[index][0].scrollIntoView()
         }
     },
     mounted () {
@@ -93,7 +119,9 @@ export default {
             let msg = res.data.msg;
             if(msg === 'ok'){
                 let data = res.data.data.cities;
-                this.formatCityList(data)
+                let { cityList, hotList } = this.formatCityList(data)
+                this.cityList = cityList;
+                this.hotList = hotList;
             }
         });
     }
